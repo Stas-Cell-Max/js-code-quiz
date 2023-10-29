@@ -6,36 +6,91 @@
     <title>JavaScript Coding Quiz</title>
     <link rel="stylesheet" href="./assets/css/styles.css"> 
 </head>
-<body>
-    <header>
-        <h1>JavaScript Coding Quiz</h1>
-    </header>
+<body onload="NextQuestion(0)">
     <main>
-        <div id="quiz-container">
-            <div id="question-container">
-                <h2>Question 1 of 5</h2>
-                <p id="question-text">What is JavaScript?</p>
+        <!-- creating a modal for when quiz ends -->
+        <div class="modal-container" id="score-modal">
+          
+            <div class="modal-content-container">
+              
+                <h1>Congratulations, Quiz Completed.</h1>
+              
+                <div class="grade-details">
+                    <p>Attempts : 10</p>
+                    <p>Wrong Answers : <span id="wrong-answers"></span></p>
+                    <p>Right Answers : <span id="right-answers"></span></p>
+                    <p>Grade : <span id="grade-percentage"></span>%</p>
+                    <p ><span id="remarks"></span></p>
+                </div>
+              
+                <div class="modal-button-container">
+                    <button onclick="closeScoreModal()">Continue</button>
+                </div>
+              
             </div>
-            <div id="answer-container">
-                <button class="answer-choice">A programming language</button>
-                <button class="answer-choice">A type of coffee</button>
-                <button class="answer-choice">An operating system</button>
-                <button class="answer-choice">A pet</button>
+        </div>
+
+        <div class="game-quiz-container">
+          
+            <div class="game-details-container">
+                <h1>Score : <span id="player-score"></span> / 10</h1>
+                <h1> Question : <span id="question-number"></span> / 10</h1>
+            </div>
+
+            <div class="game-question-container">
+                <h1 id="display-question"></h1>
+            </div>
+
+            <div class="game-options-container">
+              
+               <div class="modal-container" id="option-modal">
+                 
+                    <div class="modal-content-container">
+                         <h1>Please Pick An Option</h1>
+                      
+                         <div class="modal-button-container">
+                            <button onclick="closeOptionModal()">Continue</button>
+                        </div>
+                      
+                    </div>
+                 
+               </div>
+              
+               <span class="game-option">
+                <input type="radio" id="option-one" name="option" class="radio" value="optionA" />
+                <label for="option-one" class="option" id="option-one-label"></label>
+            </span>
+            
+            <span>
+                <input type="radio" id="option-two" name="option" class="radio" value="optionB" />
+                <label for="option-one" class="option" id="option-two-label"></label>
+            </span>
+            
+            <span>
+                <input type="radio" id="option-three" name="option" class="radio" value="optionC" />
+                <label for="option-three" class="option" id="option-three-label"></label>
+            </span>
+            
+            <span>
+                <input type="radio" id="option-four" name="option" class="radio" value="optionD" />
+                <label for="option-four" class="option" id="option-four-label"></label>
+            </span>
+            
+            </div>
+
+            <div class="next-button-container">
+                <button onclick="handleNextQuestion()">Next Question</button>
             </div>
         </div>
-        <div id="score-container">
-            <p>Score: <span id="score">0</span></p>
+       
+      
         </div>
-        <div id="timer-container">
-            <p>Time: <span id="timer">45</span> seconds</p>
-        </div>
-        <div id="game-over-container">
-            <h2>Game Over!</h2>
-            <p>Your score: <span id="final-score">0</span></p>
-            <input type="text" id="initials" placeholder="Enter your initials">
-            <button id="save-score">Save Score</button>
         </div>
     </main>
+    <script
+			  src="https://code.jquery.com/jquery-3.7.1.js">
+            </script>
+			  
     <script src="./assets/javascript/script.js"></script>
 </body>
 </html>
