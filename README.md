@@ -61,5 +61,9 @@ https://api.jquery.com/
 
 ## Deployment
 
+https://stas-cell-max.github.io/js-code-quiz/
+
+![js-code-quiz-stanislav morozan](https://github.com/Stas-Cell-Max/js-code-quiz/assets/137020431/1b2803d0-5f0e-4ce2-b328-01dab4252884)
+
 
 
