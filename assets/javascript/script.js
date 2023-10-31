@@ -1,284 +1,264 @@
-var questions = [
-    {
-        question: "What is JavaScript?",
-        optionA: "A type of cofee",
-        optionB: "A programming language",
-        optionC: "An operating system",
-        optionD: "A framework",
-        correctOption: "optionB"
-    },
+const questions = [
 
-    {
-        question: "Inside which HTML element do we put the JavaScript?",
-        optionA: "<script>",
-        optionB: "<js>",
-        optionC: "<Java Script>",
-        optionD: "scripting",
-        correctOption: "optionA"
-    },
+{ 
+    prompt: `How do you call a 
+             function named  
+             myFunction?`, 
+    options: [ 
+        "call myFunction()", 
+        "myFunction()", 
+        "call function myFunction", 
+        "Call.myFunction", 
+    ], 
+    answer: "myFunction()", 
+}, 
 
-    {
-        question: "Where is the correct place to insert a JavaScript?",
-        optionA: "Within a comment <!-- ... --> in the HTML content",
-        optionB: "In the <head> section",
-        optionC: "In the <body> section",
-        optionD: "Both the <hed> section and the <body> section are correct",
-        correctOption: "optionD"
-    },
+{ 
+    prompt: `How does a for loop 
+             start?`, 
+    options: [ 
+        "for (i = 0; i <= 5; i++)", 
+        "for (i = 0; i <= 5)", 
+        "for i = 1 to 5", 
+        " for (i <= 5; i++)", 
+    ], 
+    answer: "for (i = 0; i <= 5; i++)", 
+}, 
 
-    {
-        question: "What is JavaScript primarily used for?",
-        optionA: "Styling web pages",
-        optionB: "Structuring web content",
-        optionC: "Adding interactivity to web pages",
-        optionD: "Managing databases",
-        correctOption: "optionC"
-    },
+{ 
+    prompt: `In JavaScript, which  
+             of the following is  
+             a logical operator?`, 
+    options: ["|", "&&", "%", "/"], 
+    answer: "&&", 
+}, 
 
-    {
-        question: "Which of the following is a correct way to declare a variable in JavaScript?",
-        optionA: " variable x",
-        optionB: "var x",
-        optionC: "v x",
-        optionD: "let x",
-        correctOption: "optionB"
-    },
+{ 
+    prompt: `A named element in a  
+             JavaScript program that 
+             is used to store and  
+             retrieve data is a _____.`, 
+    options: [ 
+        "method", 
+        "assignment operator", 
+        "letiable", 
+        "string", 
+    ], 
+    answer: "letiable", 
+}, 
+]; 
 
-    {
-        question: "What is the purpose of the if statement in JavaScript?",
-        optionA: "Loop through an array",
-        optionB: "Define a function",
-        optionC: "Control the flow of code based on a condition",
-        optionD: "Print text to the console",
-        correctOption: "optionC"
-    },
+// Get Dom Elements 
 
-    {
-        question: "What is the correct syntax to create a function in JavaScript?",
-        optionA: "create myFunction()",
-        optionB: "function = myFunction()",
-        optionC: "function myFunction()",
-        optionD: "def myFunction():",
-        correctOption: "optionC"
-    },
+let questionsEl = 
+document.querySelector( 
+    "#questions"
+); 
+let timerEl = 
+document.querySelector("#timer"); 
+let choicesEl = 
+document.querySelector("#options"); 
+let submitBtn = document.querySelector( 
+"#submit-score"
+); 
+let startBtn = 
+document.querySelector("#start"); 
+let nameEl = 
+document.querySelector("#name"); 
+let feedbackEl = document.querySelector( 
+"#feedback"
+); 
+let reStartBtn = 
+document.querySelector("#restart"); 
 
-    {
-        question: "Which operator is used for strict equality in JavaScript?",
-        optionA: "=",
-        optionB: "==",
-        optionC: "!==",
-        optionD: "===",
-        correctOption: "optionD"
-    },
+// Quiz's initial state 
+let currentQuestionIndex = 0; 
+let time = questions.length * 15; 
+let timerId; 
 
-    {
-        question: "What does the typeof operator do in JavaScript?",
-        optionA: "Returns the data type of a value",
-        optionB: "Compares two values",
-        optionC: "Checks if a variable is defined",
-        optionD: "Converts a string to a number",
-        correctOption: "optionA"
-    },
+// Start quiz and hide frontpage 
 
-    {
-        question: "How do you comment a single line in JavaScript?",
-        optionA: "/* This is a comment */",
-        optionB: "// This is a comment",
-        optionC: "-- This is a comment",
-        optionD: "' This is a comment",
-        correctOption: "optionA"
-    },
+function quizStart() { 
+timerId = setInterval( 
+    clockTick, 
+    1000 
+); 
+timerEl.textContent = time; 
+let landingScreenEl = 
+    document.getElementById( 
+        "start-screen"
+    ); 
+landingScreenEl.setAttribute( 
+    "class", 
+    "hide"
+); 
+questionsEl.removeAttribute( 
+    "class"
+); 
+getQuestion(); 
+} 
 
-    {
-        question: "Which of the following is not a data type in JavaScript?",
-        optionA: "String",
-        optionB: "Boolean",
-        optionC: "Number",
-        optionD: "Character",
-        correctOption: "optionD"
-    },
-
-    {
-        question: "What is an array in JavaScript?",
-        optionA: "A single value",
-        optionB: "A data structure to store multiple values",
-        optionC: "A function",
-        optionD: "A loop",
-        correctOption: "optionB"
+// Loop through array of questions and 
+// Answers and create list with buttons 
+function getQuestion() { 
+let currentQuestion = 
+    questions[currentQuestionIndex]; 
+let promptEl = 
+    document.getElementById( 
+        "question-words"
+    ); 
+promptEl.textContent = 
+    currentQuestion.prompt; 
+choicesEl.innerHTML = ""; 
+currentQuestion.options.forEach( 
+    function (choice, i) { 
+        let choiceBtn = 
+            document.createElement( 
+                "button"
+            ); 
+        choiceBtn.setAttribute( 
+            "value", 
+            choice 
+        ); 
+        choiceBtn.textContent = 
+            i + 1 + ". " + choice; 
+        choiceBtn.onclick = 
+            questionClick; 
+        choicesEl.appendChild( 
+            choiceBtn 
+        ); 
     } 
-]
+); 
+} 
 
+// Check for right answers and deduct 
+// Time for wrong answer, go to next question 
 
-var numQuestions = 12; // Number of questions to select
-var maxScore = 10; // Maximum score for the game
-var timePerQuestion = 30; // Time in seconds per question
+function questionClick() { 
+if ( 
+    this.value !== 
+    questions[currentQuestionIndex] 
+        .answer 
+) { 
+    time -= 10; 
+    if (time < 0) { 
+        time = 0; 
+    } 
+    timerEl.textContent = time; 
+    feedbackEl.textContent = `Wrong! The correct answer was  
+    ${questions[currentQuestionIndex].answer}.`; 
+    feedbackEl.style.color = "red"; 
+} else { 
+    feedbackEl.textContent = 
+        "Correct!"; 
+    feedbackEl.style.color = 
+        "green"; 
+} 
+feedbackEl.setAttribute( 
+    "class", 
+    "feedback"
+); 
+setTimeout(function () { 
+    feedbackEl.setAttribute( 
+        "class", 
+        "feedback hide"
+    ); 
+}, 2000); 
+currentQuestionIndex++; 
+if ( 
+    currentQuestionIndex === 
+    questions.length 
+) { 
+    quizEnd(); 
+} else { 
+    getQuestion(); 
+} 
+} 
 
-let shuffledQuestions = [] //empty array to hold shuffled selected questions
+// End quiz by hiding questions, 
+// Stop timer and show final score 
 
-function handleQuestions() { 
-    //function to shuffle and push 10 questions to shuffledQuestions array
-    while (shuffledQuestions.length <= numQuestions) {
-        var random = questions[Math.floor(Math.random() * questions.length)]
-        if (!shuffledQuestions.includes(random)) {
-            shuffledQuestions.push(random)
-        }
-        } 
-       setTimeout(() => {
-        if (indexNumber < numQuestions) {
-            NextQuestion(indexNumber);
-        } else {
-            handleEndGame();
-        }
-        resetOptionBackground();
-    }, 1000);  
-     
-}
+function quizEnd() { 
+clearInterval(timerId); 
+let endScreenEl = 
+    document.getElementById( 
+        "quiz-end"
+    ); 
+endScreenEl.removeAttribute( 
+    "class"
+); 
+let finalScoreEl = 
+    document.getElementById( 
+        "score-final"
+    ); 
+finalScoreEl.textContent = time; 
+questionsEl.setAttribute( 
+    "class", 
+    "hide"
+); 
+} 
 
+// End quiz if timer reaches 0 
 
+function clockTick() { 
+time--; 
+timerEl.textContent = time; 
+if (time <= 0) { 
+    quizEnd(); 
+} 
+} 
 
-let questionNumber = 1
-let playerScore = 0  
-let wrongAttempt = 0 
-let indexNumber = 0
+// Save score in local storage 
+// Along with users' name 
 
-// function for displaying next question in the array to dom
-function NextQuestion(index) {
-    handleQuestions()
-    var currentQuestion = shuffledQuestions[index]
-    document.getElementById("question-number").innerHTML = questionNumber
-    document.getElementById("player-score").innerHTML = playerScore
-    document.getElementById("display-question").innerHTML = currentQuestion.question;
-    document.getElementById("option-one-label").innerHTML = currentQuestion.optionA;
-    document.getElementById("option-two-label").innerHTML = currentQuestion.optionB;
-    document.getElementById("option-three-label").innerHTML = currentQuestion.optionC;
-    document.getElementById("option-four-label").innerHTML = currentQuestion.optionD;
+function saveHighscore() { 
+let name = nameEl.value.trim(); 
+if (name !== "") { 
+    let highscores = 
+        JSON.parse( 
+            window.localStorage.getItem( 
+                "highscores"
+            ) 
+        ) || []; 
+    let newScore = { 
+        score: time, 
+        name: name, 
+    }; 
+    highscores.push(newScore); 
+    window.localStorage.setItem( 
+        "highscores", 
+        JSON.stringify(highscores) 
+    ); 
+    alert( 
+        "Your Score has been Submitted"
+    ); 
+} 
+} 
 
-}
+// Save users' score after pressing enter 
 
+function checkForEnter(event) { 
+if (event.key === "Enter") { 
+    saveHighscore(); 
+    alert( 
+        "Your Score has been Submitted"
+    ); 
+} 
+} 
+nameEl.onkeyup = checkForEnter; 
 
-function checkForAnswer() {
-    var currentQuestion = shuffledQuestions[indexNumber] //gets current Question 
-    var currentQuestionAnswer = currentQuestion.correctOption //gets current Question's answer
-    var options = document.getElementsByName("option"); //gets all elements in dom with name of 'option' (in this the radio inputs)
-    let correctOption = null
+// Save users' score after clicking submit 
 
-    options.forEach((option) => {
-        if (option.value === currentQuestionAnswer) {
-            //get's correct's radio input with correct answer
-            correctOption = option.labels[0].id
-        }
-    })
-   
-    //checking to make sure a radio input has been checked or an option being chosen
-    if (options[0].checked === false && options[1].checked === false && options[2].checked === false && options[3].checked == false) {
-        document.getElementById('option-modal').style.display = "flex"
-    }
+submitBtn.onclick = saveHighscore; 
 
-    //checking if checked radio button is same as answer
-    options.forEach((option) => {
-        if (option.checked === true && option.value === currentQuestionAnswer) {
-            document.getElementById(correctOption).style.backgroundColor = "green"
-            playerScore++
-            indexNumber++
-            //set to delay question number until when next question loads
-            setTimeout(() => {
-                questionNumber++
-            }, 1000)
-        }
+// Start quiz after clicking start quiz 
 
-        else if (option.checked && option.value !== currentQuestionAnswer) {
-            var wrongLabelId = option.labels[0].id
-            document.getElementById(wrongLabelId).style.backgroundColor = "red"
-            document.getElementById(correctOption).style.backgroundColor = "green"
-            wrongAttempt++
-            indexNumber++
-            //set to delay question number till when next question loads
-            setTimeout(() => {
-                questionNumber++
-            }, 1000)
-        }
-    })
-}
-
-
-
-//called when the next button is called
-function handleNextQuestion() {
-    checkForAnswer()
-    unCheckRadioButtons()
-    //delays next question displaying for a second
-    setTimeout(() => {
-        if (indexNumber <= 9) {
-            NextQuestion(indexNumber)
-        }
-        else {
-            handleEndGame()
-        }
-        resetOptionBackground()
-    }, 1000);
-}
-
-//sets options background back to null after display the right/wrong colors
-function resetOptionBackground() {
-    var options = document.getElementsByName("option");
-    options.forEach((option) => {
-        document.getElementById(option.labels[0].id).style.backgroundColor = ""
-    })
-}
-
-// unchecking all radio buttons for next question(can be done with map or foreach loop also)
-function unCheckRadioButtons() {
-    var options = document.getElementsByName("option");
-    for (let i = 0; i < options.length; i++) {
-        options[i].checked = false;
-    }
-}
-
-// function for when all questions being answered
-function handleEndGame() {
-    let remark = null
-    let remarkColor = null
-
-    // condition check for player remark and remark color
-    if (playerScore <= 3) {
-        remark = "Bad Grades, Keep Practicing."
-        remarkColor = "red"
-    }
-    else if (playerScore >= 4 && playerScore < 7) {
-        remark = "Average Grades, You can do better."
-        remarkColor = "orange"
-    }
-    else if (playerScore >= 7) {
-        remark = "Excellent, Keep the good work going."
-        remarkColor = "green"
-    }
-    var playerGrade = (playerScore / 10) * 100
-
-    //data to display to score board
-    document.getElementById('remarks').innerHTML = remark
-    document.getElementById('remarks').style.color = remarkColor
-    document.getElementById('grade-percentage').innerHTML = playerGrade
-    document.getElementById('wrong-answers').innerHTML = wrongAttempt
-    document.getElementById('right-answers').innerHTML = playerScore
-    document.getElementById('score-modal').style.display = "flex"
-
-}
+startBtn.onclick = quizStart;
 
 
 
 
-//closes score modal and resets game
-function closeScoreModal() {
-    questionNumber = 1
-    playerScore = 0
-    wrongAttempt = 0
-    indexNumber = 0
-    shuffledQuestions = []
-    NextQuestion(indexNumber)
-    document.getElementById('score-modal').style.display = "none"
-}
 
-//function to close warning modal
-function closeOptionModal() {
-    document.getElementById('option-modal').style.display = "none"
-}
+
+
+
