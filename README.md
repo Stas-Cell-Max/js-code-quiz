@@ -5,7 +5,7 @@ A web-based quiz application that tests your knowledge of JavaScript fundamental
 
 ## Table of Contents
 
-- [Demo](#demo)
+
 - [Features](#features)
 - [Usage](#usage)
 - [How It Works](#how-it-works)
@@ -15,9 +15,6 @@ A web-based quiz application that tests your knowledge of JavaScript fundamental
 - [References](#references)
 - [Deployment](#deployment)
 
-## Demo
-
-![Quiz Application Demo](demo.gif)
 
 ## Features
 
@@ -47,7 +44,22 @@ A web-based quiz application that tests your knowledge of JavaScript fundamental
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/stas-cell-max/js-code-quiz.git
+## Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
+
+    Fork the repository.
+    Create your feature branch: git checkout -b feature/new-feature.
+    Commit your changes: git commit -m 'Add a new feature'.
+    Push to the branch: git push origin feature/new-feature.
+    Submit a pull request.
+    
+## References 
+https://www.geeksforgeeks.org/
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents
+https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
+https://api.jquery.com/
+
+## Deployment
+
 
 
