@@ -64,6 +64,7 @@ button:hover {
  
 .options button { 
     display: block; 
+    font-size: 17px;
 } 
  
 input[type="text"] { 

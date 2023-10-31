@@ -1,87 +1,84 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  
-<head> 
-    <meta charset="UTF-8" /> 
-    <meta name="viewport" 
-          content="width=device-width, 
-                   initial-scale=1.0" /> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0" />
     <link rel="stylesheet"
-          href="./assets/css/styles.css" /> 
-    <title>Code Quiz</title> 
-</head> 
-  
-<body> 
-    <div class="containerHighScores"> 
-        <header> 
-            <div> 
-                <a href="./highscore.html"> 
-                    <button class="scores-header" 
-                            id="view-high-scores"> 
-                        View High Scores 
-                    </button> 
-                </a> 
-            </div> 
-  
-            <div class="timer"> 
-                <p> 
-                    Time: 
-                    <span id="timer"> 
-                        0 
-                    </span> 
-                </p> 
-            </div> 
-        </header> 
-  
-        <main class="quiz"> 
-            <div id="quiz-start"> 
-                <div class="landing" 
-                     id="start-screen"> 
-                    <h1 id="title"> 
-                        Java Script Code Quiz
-                    </h1> 
+          href="./assets/css/styles.css" /> <!-- Linking to external CSS stylesheet -->
+    <title>Code Quiz</title> <!-- Setting the title of the web page -->
+</head>
+<body>
+    <div class="containerHighScores"> <!-- Main container for the application -->
+        <header>
+            <div>
+                <a href="./highscore.html"> <!-- Link to high scores page -->
+                    <button class="scores-header"
+                            id="view-high-scores"> <!-- Button to view high scores -->
+                        View High Scores
+                    </button>
+                </a>
+            </div>
+
+            <div class="timer">
+                <p>
+                    Time:
+                    <span id="timer">
+                        0 <!-- Timer display -->
+                    </span>
+                </p>
+            </div>
+        </header>
+
+        <main class="quiz">
+            <div id="quiz-start"> <!-- Container for quiz start section -->
+                <div class="landing"
+                     id="start-screen"> <!-- Landing section for quiz start -->
+                    <h1 id="title">
+                        Java Script Code Quiz <!-- Title of the quiz -->
+                    </h1>
                     
-                    <p> 
+                    <p>
                         Make an effort to answer the upcoming 
-                        JavaScript-related questions within the given time frame. 
+                        JavaScript-related questions within the given time frame. <!-- Quiz instructions -->
                         Please be aware that incorrect responses will lead to 
                         a ten-second deduction from your score and remaining time.
-                    </p> 
-                    <button id="start"> 
-                        Start Quiz 
-                    </button> 
-                </div> 
-            </div> 
-  
-            <div class="hide" id="questions"> 
-                <h2 id="question-words"></h2> 
-                <div class="options" id="options"> 
-                </div> 
-            </div> 
-  
-            <div class="hide" id="quiz-end"> 
-                <h2>Finish!</h2> 
+                    </p>
+                    <button id="start"> <!-- Button to start the quiz -->
+                        Start Quiz
+                    </button>
+                </div>
+            </div>
+
+            <div class="hide" id="questions"> <!-- Container for quiz questions -->
+                <h2 id="question-words"></h2> <!-- Question text display -->
+                <div class="options" id="options">
+                </div>
+            </div>
+
+            <div class="hide" id="quiz-end"> <!-- Container for quiz end section -->
+                <h2>Finish!</h2> <!-- Display when the quiz is finished -->
                 <p>Your final score is: 
-                    <span id="score-final"> 
-                    </span> 
-                </p> 
+                    <span id="score-final"> <!-- Display the final score -->
+                    </span>
+                </p>
                 <p> 
                     Please enter your initials: 
                     <input type="text" 
                            id="name" 
-                           max="3" /> 
-                    <button id="submit-score"> 
-                        Submit 
-                    </button> 
-                </p> 
-            </div> 
-  
+                           max="3" /> <!-- Input field for user's initials -->
+                    <button id="submit-score"> <!-- Button to submit the score -->
+                        Submit
+                    </button>
+                </p>
+            </div>
+
             <div id="feedback" 
-                 class="feedback hide"> 
-            </div> 
-        </main> 
-    </div> 
-    <script src="./assets/javascript/script.js"></script> 
-</body> 
-  
+                 class="feedback hide"> <!-- Container for feedback messages -->
+            </div>
+        </main>
+    </div>
+    <script src="./assets/javascript/script.js"></script> <!-- Link to external JavaScript file -->
+</body>
 </html>
