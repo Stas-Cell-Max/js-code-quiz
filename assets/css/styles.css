@@ -1,5 +1,5 @@
 * { 
-    font-family: Georgia, Times, "Times New Roman", serif; 
+    font-family: "Gill Sans", sans-serif; 
 } 
  
 .quiz, 
@@ -8,12 +8,14 @@
     max-width: 400px; 
 } 
  
-#top { 
-    color: rgb(212, 154, 230); 
+#title { 
+    color: rgb(51, 24, 61); 
+    padding: 30px;
 } 
  
-.containerNew { 
-    border: 5px solid; 
+.containerHighScores{ 
+    border: 1px solid; 
+    border-radius: 5px; 
     position: absolute; 
     top: 50%; 
     left: 50%; 
@@ -25,6 +27,7 @@
  
 p { 
     margin: 15px 15px; 
+    font-size: 20px;
 } 
  
 .landing { 
@@ -49,13 +52,14 @@ button {
     cursor: pointer; 
     color: #fff; 
     background-color: #872291; 
-    border-radius: 5px; 
+    border-radius: 10px; 
     border: 0; 
-    padding: 20px; 
+    padding: 10px; 
+    font-size: 15px;
 } 
  
 button:hover { 
-    background-color: #47128d; 
+    background-color: #2d085e; 
 } 
  
 .options button { 
@@ -78,6 +82,8 @@ input[type="text"] {
     color: #fff; 
     border-top: 2px solid #4B0082; 
 } 
+
+
  
 ol { 
     padding-left: 15px; 

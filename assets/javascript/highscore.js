@@ -1,4 +1,4 @@
-/ highScore.js 
+
   
 let scoresBtn = document.querySelector( 
     "#view-high-scores"

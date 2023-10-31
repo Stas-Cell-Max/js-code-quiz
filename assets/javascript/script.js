@@ -1,54 +1,65 @@
-const questions = [
+var questions = [
 
 { 
-    prompt: `How do you call a 
-             function named  
-             myFunction?`, 
+    prompt: `What is JavaScript?`, 
     options: [ 
-        "call myFunction()", 
-        "myFunction()", 
-        "call function myFunction", 
-        "Call.myFunction", 
+        "A type of coffee",
+        "A programming language", 
+        "An operating system", 
+        "A pet", 
     ], 
-    answer: "myFunction()", 
+    answer: "A programming language", 
 }, 
 
 { 
-    prompt: `How does a for loop 
-             start?`, 
+    prompt: `What does 'DOM' stand for?`, 
     options: [ 
-        "for (i = 0; i <= 5; i++)", 
-        "for (i = 0; i <= 5)", 
-        "for i = 1 to 5", 
-        " for (i <= 5; i++)", 
+       
+        "Data Object Model", 
+         "Document Object Model", 
+        "Digital Object Model", 
+        "Database Object Model", 
     ], 
-    answer: "for (i = 0; i <= 5; i++)", 
+    answer: "Document Object Model", 
 }, 
 
 { 
-    prompt: `In JavaScript, which  
-             of the following is  
-             a logical operator?`, 
-    options: ["|", "&&", "%", "/"], 
-    answer: "&&", 
+    prompt: `What is the purpose of the 'typeof' operator in JavaScript?`, 
+    options: [
+    
+    "To concatenate strings", 
+    "To create a new variable", 
+    "To check the data type of a value", 
+    "To define a function"
+], 
+    answer: "To check the data type of a value", 
 }, 
 
 { 
-    prompt: `A named element in a  
-             JavaScript program that 
-             is used to store and  
-             retrieve data is a _____.`, 
-    options: [ 
-        "method", 
-        "assignment operator", 
-        "letiable", 
-        "string", 
-    ], 
-    answer: "letiable", 
+    prompt: `What is the 'this' keyword used for in JavaScript?`, 
+    options: [
+    "To display an alert" ,
+     "To refer to the current object",
+     "To declare a new variable",
+      "To create a loop",  
+    ],
+    answer: "To refer to the current object",
 }, 
+{ 
+    prompt: `What does 'JS' stand for in JavaScript?`, 
+    options: [
+        
+        "Just Saying", 
+        "Java Style", 
+        "JavaScript", 
+        "Jazz Symphony"
+    ],
+    answer: "JavaScript",
+}, 
+
 ]; 
 
-// Get Dom Elements 
+// Get DOM Elements 
 
 let questionsEl = 
 document.querySelector( 
@@ -76,7 +87,7 @@ let currentQuestionIndex = 0;
 let time = questions.length * 15; 
 let timerId; 
 
-// Start quiz and hide frontpage 
+// Start quiz while hide the homepage 
 
 function quizStart() { 
 timerId = setInterval( 
@@ -98,8 +109,8 @@ questionsEl.removeAttribute(
 getQuestion(); 
 } 
 
-// Loop through array of questions and 
-// Answers and create list with buttons 
+// Loop through the array of questions and 
+// Answers and create buttons list  
 function getQuestion() { 
 let currentQuestion = 
     questions[currentQuestionIndex]; 
@@ -131,8 +142,8 @@ currentQuestion.options.forEach(
 ); 
 } 
 
-// Check for right answers and deduct 
-// Time for wrong answer, go to next question 
+// Check for right answers and deduct the time for wrong answer, then go to next question 
+
 
 function questionClick() { 
 if ( 
@@ -145,7 +156,7 @@ if (
         time = 0; 
     } 
     timerEl.textContent = time; 
-    feedbackEl.textContent = `Wrong! The correct answer was  
+    feedbackEl.textContent = `Wrong! The answer is  
     ${questions[currentQuestionIndex].answer}.`; 
     feedbackEl.style.color = "red"; 
 } else { 
@@ -175,8 +186,8 @@ if (
 } 
 } 
 
-// End quiz by hiding questions, 
-// Stop timer and show final score 
+// End quiz by hiding questions, then stop the timer and show the  final score 
+
 
 function quizEnd() { 
 clearInterval(timerId); 
@@ -198,7 +209,7 @@ questionsEl.setAttribute(
 ); 
 } 
 
-// End quiz if timer reaches 0 
+// End quiz when timer reaches 0 
 
 function clockTick() { 
 time--; 
@@ -208,8 +219,8 @@ if (time <= 0) {
 } 
 } 
 
-// Save score in local storage 
-// Along with users' name 
+// Save score in the local storage along with users' name
+
 
 function saveHighscore() { 
 let name = nameEl.value.trim(); 
